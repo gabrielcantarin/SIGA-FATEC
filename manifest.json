@@ -1,0 +1,43 @@
+{
+	// Obrigatório
+	"manifest_version": 2,
+	"name": "SIGA - By Gabriel Cantarin",
+	"version": "1.0",
+
+	// Descrição da nossa extensão
+	"description": "Tentativa de tornar o SIGA uma ferramenta menos pior :)",
+
+	// Íconea da nossa extensão
+	"icons": {
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+
+	// Utilizaremos as "Page Actions" e registramos isso aqui
+    "page_action": {
+        "default_icon": { 
+            "19" : "icon19.png",
+            "38" : "icon38.png"
+        },
+        "default_title": "SIGA - By Gabriel Cantarin"
+    },
+
+    // Aqui declaramos as permirsões que precisamos
+    "permissions": [ 
+        "tabs",
+        "declarativeContent"
+    ],
+
+    // Utilizaremos uma "Event Page" (note o persistent: false)
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+
+    // Injetaremos esses arquivos quando "match" ocorrer
+    "content_scripts": [ {
+        "js": [ "inject/jquery.js", "inject/batbook.js" ],
+        "css": [ "inject/batbook.css" ],
+        "matches": [ "https://*.sigacentropaulasouza.com.br/*" ]
+    } ]
+}
